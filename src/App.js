@@ -1,12 +1,19 @@
-import Discussion from "./Container/Discussion/Discussion";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import routes from "./routes";
 
 function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <Discussion />
+      <BrowserRouter>
+        <Switch>
+          {routes.map((route, index) => {
+            return <Route {...route} key={index} />;
+          })}
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

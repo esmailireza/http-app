@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import Comment from "../../Components/Comment/Comment";
-import FullComment from "../../Components/FullComment/FullComment";
-import NewComment from "../../Components/NewComment/NewComment";
 import "./discussion.css";
 import { toast } from "react-toastify";
 import { getAllComments } from "../../services/getAllCommentsService";
@@ -11,18 +9,19 @@ const Discussion = () => {
   const [comments, setComments] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [error, setError] = useState(false);
-
   useEffect(() => {
     const getComments = async () => {
       try {
         const { data } = await getAllComments();
         setComments(data);
+        console.log(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         setError(true);
       }
     };
     getComments();
+    //console.log(getComments());
   }, []);
 
   const selectCommentHandler = (id) => {
@@ -44,6 +43,7 @@ const Discussion = () => {
       renderValue = <p>fetching data failed !</p>;
       toast.error("there is an error !");
     }
+    console.log(comments);
     if (comments && !error) {
       renderValue = comments.map((c) => (
         <Comment
@@ -59,7 +59,7 @@ const Discussion = () => {
   return (
     <main>
       <section>{renderedComments()}</section>
-      <section>
+      {/* <section>
         <FullComment
           commentId={selectedId}
           setComments={setComments}
@@ -68,7 +68,7 @@ const Discussion = () => {
       </section>
       <section>
         <NewComment updatedState={updatedState} />
-      </section>
+      </section> */}
     </main>
   );
 };
