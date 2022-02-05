@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import Comment from "../../Components/Comment/Comment";
 import "./discussion.css";
 import { toast } from "react-toastify";
-import { getAllComments } from "../../services/getAllCommentsService";
-import http from "../../services/httpService";
+import axios from "axios";
+import NewComment from "../../Components/NewComment/NewComment";
+import FullComment from "../../Components/FullComment/FullComment";
 
 const Discussion = () => {
   const [comments, setComments] = useState(null);
@@ -12,7 +13,8 @@ const Discussion = () => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const { data } = await getAllComments();
+        const { data } = await axios.get("http://localhost:3001/comments");
+        console.log(data);
         setComments(data);
         console.log(data);
       } catch (error) {
@@ -21,7 +23,6 @@ const Discussion = () => {
       }
     };
     getComments();
-    //console.log(getComments());
   }, []);
 
   const selectCommentHandler = (id) => {
@@ -29,8 +30,8 @@ const Discussion = () => {
   };
 
   const updatedState = () => {
-    http
-      .get("/comments")
+    axios
+      .get("http://localhost:3001/comments")
       .then((res) => {
         setComments(res.data);
       })
@@ -59,7 +60,7 @@ const Discussion = () => {
   return (
     <main>
       <section>{renderedComments()}</section>
-      {/* <section>
+      <section>
         <FullComment
           commentId={selectedId}
           setComments={setComments}
@@ -68,7 +69,7 @@ const Discussion = () => {
       </section>
       <section>
         <NewComment updatedState={updatedState} />
-      </section> */}
+      </section>
     </main>
   );
 };

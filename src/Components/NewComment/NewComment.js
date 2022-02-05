@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react/cjs/react.development";
 import "./newComment.css";
-import { addNewComment } from "../../services/addNewCommentService";
 const NewComment = ({ updatedState }) => {
   const [comment, setComment] = useState({
     name: "",
@@ -14,10 +13,11 @@ const NewComment = ({ updatedState }) => {
   };
 
   const postCommentHandler = () => {
-    addNewComment({
-      ...comment,
-      postId: 10,
-    })
+    axios
+      .post("http://localhost:3001/comments", {
+        ...comment,
+        postId: 10,
+      })
       .then((res) => {
         console.log(res.data);
         updatedState();
