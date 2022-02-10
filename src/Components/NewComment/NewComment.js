@@ -25,7 +25,7 @@ const NewComment = ({ updatedState }) => {
       .catch();
   };
   return (
-    <div className="newComment">
+    /*  <div className="newComment">
       <h2>add new comment</h2>
       <div>
         <label>name</label>
@@ -40,6 +40,48 @@ const NewComment = ({ updatedState }) => {
         <textarea type="textarea" onChange={changeHandler} name="content" />
       </div>
       <button onClick={postCommentHandler}>add new comment</button>
+    </div> */
+    <div className="container">
+      <div className="row d-flex justify-content-center">
+        <div className="col-md-5">
+          <form>
+            <div className="form-group">
+              <label for="exampleInputEmail1">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                onChange={changeHandler}
+                name="name"
+                placeholder="name..."
+              />
+            </div>
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                className="form-control"
+                type="email"
+                onChange={changeHandler}
+                name="email"
+                placeholder="email..."
+              />
+            </div>
+            <div className="form-group">
+              <label>Body</label>
+              <textarea
+                type="textarea"
+                onChange={changeHandler}
+                name="content"
+                className="form-control"
+                placeholder="body..."
+              />
+            </div>
+
+            <button onClick={postCommentHandler} className="btn btn-primary">
+              add new comment
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
