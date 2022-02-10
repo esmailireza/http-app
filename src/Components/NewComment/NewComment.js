@@ -46,7 +46,7 @@ const NewComment = ({ updatedState }) => {
         <div className="col-md-5">
           <form>
             <div className="form-group">
-              <label for="exampleInputEmail1">Name</label>
+              <label>Name</label>
               <input
                 type="text"
                 className="form-control"
