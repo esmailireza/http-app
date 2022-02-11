@@ -38,8 +38,10 @@ const FullComment = ({ commentId, setComments, setSelectedId }) => {
       <div className="FullComment">
         <p>{comment.name}</p>
         <p>{comment.email}</p>
-        <p>{comment.body}</p>
-        <button onClick={deleteHandler}>Delete</button>
+        <p>{comment.content}</p>
+        <button onClick={deleteHandler} className="btn btn-outline-primary">
+          Delete
+        </button>
       </div>
     );
   }
