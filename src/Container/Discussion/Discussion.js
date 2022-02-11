@@ -3,7 +3,6 @@ import Comment from "../../Components/Comment/Comment";
 import "./discussion.css";
 import { toast } from "react-toastify";
 import axios from "axios";
-import NewComment from "../../Components/NewComment/NewComment";
 import FullComment from "../../Components/FullComment/FullComment";
 
 const Discussion = () => {
@@ -27,15 +26,6 @@ const Discussion = () => {
 
   const selectCommentHandler = (id) => {
     setSelectedId(id);
-  };
-
-  const updatedState = () => {
-    axios
-      .get("http://localhost:3001/comments")
-      .then((res) => {
-        setComments(res.data);
-      })
-      .catch((error) => console.log(error));
   };
 
   const renderedComments = () => {
@@ -67,9 +57,6 @@ const Discussion = () => {
           setComments={setComments}
           setSelectedId={setSelectedId}
         />
-      </section>
-      <section>
-        <NewComment updatedState={updatedState} />
       </section>
     </main>
   );

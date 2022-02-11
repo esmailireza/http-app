@@ -1,7 +1,9 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import "./newComment.css";
-const NewComment = ({ updatedState }) => {
+
+const NewComment = () => {
   const [comment, setComment] = useState({
     name: "",
     email: "",
@@ -20,31 +22,15 @@ const NewComment = ({ updatedState }) => {
       })
       .then((res) => {
         console.log(res.data);
-        updatedState();
       })
       .catch();
   };
   return (
-    /*  <div className="newComment">
-      <h2>add new comment</h2>
-      <div>
-        <label>name</label>
-        <input type="text" onChange={changeHandler} name="name" />
-      </div>
-      <div>
-        <label>email</label>
-        <input type="email" onChange={changeHandler} name="email" />
-      </div>
-      <div>
-        <label>body</label>
-        <textarea type="textarea" onChange={changeHandler} name="content" />
-      </div>
-      <button onClick={postCommentHandler}>add new comment</button>
-    </div> */
     <div className="container">
       <div className="row d-flex justify-content-center">
         <div className="col-md-5">
           <form>
+            <h2>add new comment</h2>
             <div className="form-group">
               <label>Name</label>
               <input
@@ -76,9 +62,13 @@ const NewComment = ({ updatedState }) => {
               />
             </div>
 
-            <button onClick={postCommentHandler} className="btn btn-primary">
+            <Link
+              onClick={postCommentHandler}
+              className="btn btn-primary"
+              to="/"
+            >
               add new comment
-            </button>
+            </Link>
           </form>
         </div>
       </div>
