@@ -4,7 +4,6 @@ import { useState } from "react/cjs/react.development";
 import "./fullComment.css";
 const FullComment = ({ commentId, setComments, setSelectedId }) => {
   const [comment, setComment] = useState(null);
-  console.log(commentId);
 
   const deleteHandler = async () => {
     try {
@@ -18,7 +17,6 @@ const FullComment = ({ commentId, setComments, setSelectedId }) => {
 
   useEffect(() => {
     if (commentId) {
-      /* getOneComment(commentId) */
       axios
         .get(`http://localhost:3001/comments/${commentId}`)
         .then((res) => {

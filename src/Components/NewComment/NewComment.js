@@ -20,9 +20,7 @@ const NewComment = () => {
         ...comment,
         postId: 10,
       })
-      .then((res) => {
-        console.log(res.data);
-      })
+      .then((res) => {})
       .catch();
   };
   return (

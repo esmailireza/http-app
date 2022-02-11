@@ -13,9 +13,7 @@ const Discussion = () => {
     const getComments = async () => {
       try {
         const { data } = await axios.get("http://localhost:3001/comments");
-        console.log(data);
         setComments(data);
-        console.log(data);
       } catch (error) {
         //console.log(error);
         setError(true);
@@ -34,7 +32,6 @@ const Discussion = () => {
       renderValue = <p>fetching data failed !</p>;
       toast.error("there is an error !");
     }
-    console.log(comments);
     if (comments && !error) {
       renderValue = comments.map((c) => (
         <Comment
